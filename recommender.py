@@ -8,7 +8,11 @@ Original file is located at
 """
 
 import pandas as pd
-df = pd.read_csv('/content/netflix_titles.csv')
+import os
+try:
+    df = pd.read_csv("netflix_titles.csv")  # ✅ For local
+except:
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'netflix_titles.csv'))  # ✅ For Streamlit
 display(df.head())
 
 import matplotlib.pyplot as plt
