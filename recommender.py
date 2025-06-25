@@ -61,7 +61,4 @@ joblib.dump(tfidf, "tfidf.pkl")
 joblib.dump(X, "tfidf_matrix.pkl")
 df.to_csv("netflix_data_with_cluster.csv", index=False)
 
-from google.colab import files
-files.download("netflix_titles.csv")
-files.download("tfidf.pkl")
-files.download("tfidf_matrix.pkl")
+
