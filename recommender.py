@@ -15,6 +15,9 @@ except:
     df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'netflix_titles.csv'))  # ✅ For Streamlit
 display(df.head())
 
+import streamlit as st
+st.write(df.head())
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
