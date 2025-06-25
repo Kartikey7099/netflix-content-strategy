@@ -4,17 +4,10 @@ from sklearn.metrics.pairwise import linear_kernel
 
 # Load Data
 df = pd.read_csv("netflix_data_with_cluster.csv")
-
-# Load TF-IDF Matrix
 tfidf_matrix = joblib.load("tfidf_matrix.pkl")
-
-# Build cosine similarity matrix
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
-
-# Title to index mapping
 indices = pd.Series(df.index, index=df['title']).drop_duplicates()
 
-# Recommendation Function
 def get_recommendations(title, df, cosine_sim):
     try:
         idx = indices[title]
@@ -26,7 +19,6 @@ def get_recommendations(title, df, cosine_sim):
     movie_indices = [i[0] for i in sim_scores]
     return df['title'].iloc[movie_indices].tolist()
 
-# Export for use in app.py
 __all__ = ['get_recommendations', 'cosine_sim']
 
 
